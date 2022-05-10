@@ -81,7 +81,7 @@ input:checked[type=checkbox] {
     font-family: inherit; font-size: inherit;
     vertical-align: middle; text-align: left;
     white-space: nowrap;
-    background: #2c2a34 url('/assets/img/down.svg') no-repeat right 10px center; 
+    background: #2c2a34 url('../assets/img/down.svg') no-repeat right 10px center; 
     background-size: 10px;
     color: #fff;
     -webkit-appearance: none;
