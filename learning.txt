@@ -1,0 +1,145 @@
+* 세팅하는 방법
+1. html에 라이브러리, css, js 태그 넣어주고
+파일질라에 업로드해서 개발자도구로 정상적으로 들어갔는지 확인
+2. css html validator로 검사
+
+
+* 반응형 제작
+- 전체를 다 만들고 반응형하지 않고 한 섹션씩!
+
+
+* ir기법
+  .ir_pm {display: block; overflow: hidden; font-size: 0; line-height: 0; text-indent: -9999px;} /* 의미있는 이미지의 대체 텍스트를 제공하는 경우 */
+            .ir_wa {display: block; overflow: hidden; position: relative; z-index: -1; width: 100%; height: 100%;} /* 의미있는 이미지의 대체 텍스트로 이미지가 없어도 대체 텍스트를 보여주고자 할 때 */
+            .ir_su {overflow: hidden; position: absolute; width: 0; height: 0; line-height: 0; text-indent: -9999px;} /* 대체 텍스트가 아닌 접근성을 위한 숨김 텍스트를 제공할 때 */
+
+        .header .header-icon a.icon1 {background-position: 0 0;}
+        .header .header-icon a.icon2 {background-position: 0 -60px;}
+        .header .header-icon a.icon3 {background-position: 0 -120px;}
+        .header .header-icon a.icon4 {background-position: 0 -180px;}
+        .header .header-icon a.icon1:hover {background-position: -60px 0;}
+        .header .header-icon a.icon2:hover {background-position: -60px -60px;}
+        .header .header-icon a.icon3:hover {background-position: -60px -120px;}
+        .header .header-icon a.icon4:hover {background-position: -60px -180px;}
+
+
+* float: left로 인한 영역깨짐(height:0) 방지법 
+        1. 깨지는 영역에 똑같이 float:left를 사용한다.(X) --> 모든 박스에 float:left를 사용하게 됩니다.
+        2. float의 성질을 차단하는 clear: both;를 사용한다.(X) --> 어떤 영역이 깨졌는지 찾기 어려움.
+        3. float을 사용한 상위 박스한테 overflow: hidden을 사용합니다. (O) --> 현재는 제일 많이 사용.
+        4. clearfix를 사용합니다. (O)
+
+
+* 뷰포트
+피시화면의 비율을 줄여 모바일 화면에서 볼 수 있도록 하는 기술
+width: viewport의 가로크기 조정
+height: viewport의 세로크기 조정
+initial-scale: 초기 배율 설정, 기본값 1
+minimun-scale: viewport의 최소 배율값, 기본값 0.25
+maximum-scale: viewport의 최대 배율값, 기본값 1.6
+user-scalable: 사용자의 확대/축소 기능 설정, 기본값 yes
+??device-width:  웹을 기기의 뷰포트의 크기와 같게 만들어 준다.
+
+
+* 파비콘
+<link rel="shortcut icon" href="">
+- 사이즈는 16x16, 32x32, 48x48, 64x64
+ico, png, jpg, gjf 파일을 지원함
+(ico는 모든 브라우저에서 지원)
+- 파비콘은 웹 브라우저 아이콘
+- 파비콘은 .ico 파일로 만들어야 함
+
+
+* 모바일용 '아이콘'
+<link rel="apple-touch-iconprecomposed" href="asset/iocn/favicon.png"/>
+모바일용 아이콘도 따로 설정할 수 있고
+모바일용 아이콘은 해상도별로 설정함
+
+
+* html5shiv
+구 익스에서 새로 생긴 시맨틱태그를 인식시켜주는 라이브러리
+
+
+* Modernizr
+- 사용자 브라우저의 html5, css3 기능들을 감지하여
+지원여부를 판별하는 javascript 라이브러리
+- 브라우저 기능검사 도구
+- html 태그에 지원여부를 클래스값으로 알려줌
+
+
+* 하드코딩?
+예전엔 디자인된 걸 자동으로 코딩해주는 프로그램으로 제작했는데,
+이제는 웹표준 준수하기 위해서 직접 코딩하는 것을 말함
+
+
+* @charset "utf-8"
+소스볼 떄 한글이 안깨지도록!
+
+
+
+<메가박스 01 ~ 06>
+- 코드는 남이 본다고 생각하고, 깔끔!하게 짠다
+- row라는 박스를 하나 더 만들어 사이드 여백 패딩값 적용해줌
+(디바이스 크기마다 패딩값 변경) 
+- slider안에 container > row를 넣어줌
+- slide 반응형을 위해서 이미지를 bg로 넣어줌
+- 한글(영어)에서 영어는 em으로 넣어줌
+- 라이브러리 css랑 충돌하는 부분은 !important를 넣어서 적용해줌
+
+<메가박스 07>
+- 메뉴/tab에 active 붙여주기
+- 이미지를 표현하는 태그
+    1. img : 이미지 불러올 때 (srcset과 이용하면 반응형 가능)
+    2. figure : 이미지를 표현할 때
+    3. figcaption : 이미지를 설명할 때
+    4. picture : 이미지를 화면 크기에 따라 사용 (source태그와 같이 사용)
+- pc용 이미지를 모바일용에서 동일하게 사용할 때 문제점
+    1. 모바일용에선 불필요한 트래픽, 용량 발생
+    2. 래티나? 고밀집도(ex: @2x)해상도에서 이미지 흐림 현상
+    --> 그래서, 애플이 제안한 img의 srcset태그를 사용할 수 있다
+- border가 겹치는건 margin-right -1px를 줘서 한줄로 보이도록 가능
+- 이미지스트라이프 + 이미지 반응형 최적화
+    1. reset에 스트라이프 이미지로 미디어쿼리를 써줌
+    2. reset에 설정한 클라스(.icon)를 이미지내용(all, a12, a15..)에 맞게 html에 작성
+    3. css에서 background-position으로 이미지 위치 맞춰주기
+
+
+<메가박스 08 :탭메뉴 제이쿼리>
+- e.preventDefault();
+  --> 탭메뉴를 눌렀을 때, 젤 위로 가는 것을 차단(href=#)
+
+
+<메가박스 10 :영화차트 슬라이드 반응형>
+- position의 기본값은 static
+- z-index를 주되, 깨지지 않게 하려면 position:relative
+
+
+<메가박스 13 :새로운 영화1>
+- svg.png는 코드 복붙하면 검정색으로 뜸
+    --> so, 도형이나 패스요소의 클래스를 이용해 css를 변경해줘야함!
+        .st1 {fill: #fff;}
+
+- svg는 ie10? 부터 지원해서 호환성 체크 필수~!
+
+
+<메가박스 13 :새로운 영화2>
+- 이미지와 글씨의 수평이 맞지 않을 때
+    --> 글씨보다는 이미지를 옮긴다! (vertical-align: -3px;)
+- input과 select 등은 브라우저마다 다르기 때문에 초기화 시켜주는게 좋
+
+
+<메가박스 15 :공지사항 / 탭 메뉴>
+- 넣어야 할 요소들이 많을 때 클래스를 안넣어도 되는 dl,dt,dd 태그
+
+
+<메가박스 15 :메가박스 할인카드>
+- 이미지를 넣을 땐 absolute, 영역은 padding으로 잡아줌
+
+
+<메가박스 20 :스킵 메뉴>
+- 사이트에 들어갔을 때 tab을 누르면 처음으로 뜨는 북마크 버튼
+
+
+<메가박스 21 :유튭 api>
+1. 레이어 팝업을 만든다
+2. 
